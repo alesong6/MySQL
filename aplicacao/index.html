@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Front End</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div id="linha-azul">
+            <span id="numero">
+                <a href="tel:551112341234">11 1234-1234</a>
+                <a href="https://wa.me/5511912341234?text=Tenho uma dúvida:">11 1234-1234</a>
+            </span>
+        </div>
+
+        <!-- Logo e menu -->
+        <nav id="menu-header">
+            <img src="https://placehold.co/220x80" alt="Logo" id="logo">
+            <ul id="menu">
+                <li><a href="#">HOME</a></li>
+                <li>
+                    <a id="sistema" href="#">EMPRESA</a>
+                    <ul id="submenu-empresa">
+                        <li><a href="#">Submenu 1</a></li>
+                        <li><a href="#">Submenu 1</a></li>
+                        <li><a href="#">Submenu 1</a></li>
+                        <li><a href="#">Submenu 1</a></li>
+                        <li>
+                            <ul id="submenu2-empresa">
+                                <li><a href="#">Submenu 2</a></li>
+                                <li><a href="#">Submenu 2</a></li>
+                                <li><a href="#">Submenu 2</a></li>
+                                <li><a href="#">Submenu 2</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">CLIENTES</a></li>
+                <li><a href="#">CONTATO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- slide  -->
+    <section class="splide" aria-label="Splide Slide">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide"><img src="https://placehold.co/600x300" alt="Slide 1"></li>
+                <li class="splide__slide"><img src="https://placehold.co/600x300" alt="Slide 2"></li>
+            </ul>
+        </div>
+    </section>
+
+    <article class="artigo">
+        <div>
+            <h1>TESTE DE HTML E CSS</h1> 
+            <p>Quesitos de avaliação: </p>
+            <ul class="artigoTexto">
+                <li>Organização do código (quanto mais limpo melhor);</li>
+                <li>Nível de detalhismo (quanto mais identico melhor);</li>
+                <li>Tempo de desenvolvimento (seja sincero ao enviar o tempo gasto)</li>
+            </ul>
+            <p>Ao finalizar o teste, envie zipado o código para o e-mail com o tempo <br> gasto e seu cv anexado. </p>
+            <p>Obrigado e boa sorte!</p>
+        </div>
+        <figure>
+            <img class="imgTexto" src="https://placehold.co/400x300" alt="imgMeio">
+        </figure>
+    </article>
+    
+    <div><h1 class="boxTitle">BOXES DE DESTAQUE</h1></div>
+    <article class="boxes">
+        <figure>
+            <img class="boxesImg" src="https://placehold.co/200x200" alt="imgBox">
+            <a href="">Um texto descritivo com link <br> apenas.</a>
+        </figure>
+        <figure>
+            <img class="boxesImg" src="https://placehold.co/200x200" alt="imgBox">
+            <a href="">Um texto descritivo com link <br> apenas.</a>
+        </figure>
+        <figure>
+            <img class="boxesImg" src="https://placehold.co/200x200" alt="imgBox">
+            <a href="">Um texto descritivo com link <br> apenas.</a>
+        </figure>
+        <figure>
+            <img class="boxesImg" src="https://placehold.co/200x200" alt="imgBox">
+            <a href="">Um texto descritivo com link <br> apenas.</a>
+        </figure>
+    </article>
+
+    <footer> 
+        <ul id="menu2">
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">EMPRESA</a></li>
+            <li><a href="#">CLIENTES</a></li>
+            <li><a href="#">CONTATO</a></li>
+        </ul>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

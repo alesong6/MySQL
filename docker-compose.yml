@@ -1,0 +1,73 @@
+services:
+# banco de dados mySQL
+  db:
+      image: mysql:5.7.22 # imagem do docker hub escolhida
+      platform: linux/x86_64 #SO escolhido para o banco
+      restart: unless-stopped #serviço sempre reiniciado
+      container_name: python-db #nome do serviço
+      environment:
+          MYSQL_DATABASE: ${DB_DATABASE:-python}
+          MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+          MYSQL_PASSWORD: ${DB_PASSWORD:-python}
+          MYSQL_USER: ${DB_USERNAME:-python}
+      #volumes: #pastas espelhadas no container
+        # - ./my.cnf:/etc/mysql/my.cnf
+        # - ./.dados/mysql/dbdata:/var/lib/mysql
+        # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      ports: #portas de acesso
+          - "3308:3306"
+      networks:
+      - python_network
+
+      # serviços são os container no docker que são como VM's
+      # o docker não tem uma "tela" para uso
+      # noVNC - para dar acesso à tela do container Ubuntu
+  python: 
+    
+      # a contrução (copiar) será na raiz da pasta
+      build: .
+      # a porta da VM: Porta no container 
+      ports:
+        - "7090:7092"
+        #persistência/ cópia de dados
+      volumes:
+        - ./src:/src
+        #tela virtual que será usada pelo noVNC
+      environment:
+        - DISPLAY=:0
+        #terminal dentro do container python
+      tty: true        
+
+#serviços para usar o PHP
+  nginx:
+    build: ./nginx/
+    ports: 
+      - 8090:80
+    volumes:
+      - ./aplicacao/:/var/www/html/
+
+  php:
+      build: ./php/
+      expose: 
+          - 8000
+      volumes:
+          - ./aplicacao/:/var/www/html/
+
+networks:
+    python_network: # nome da rede
+        driver: bridge # permite a comunicação em rede entre os containers
+
+#ver os containers
+#docker ps
+#127.0.0.1:9000
+
+#criando as imagens dos containers
+#docker compose build
+
+#removendo os containers (descarta tudo)
+#docker compose down
+
+# colocamos em funcionamento os containers
+#docker compose up -d --build
+
+ 
