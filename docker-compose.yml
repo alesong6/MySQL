@@ -1,4 +1,13 @@
 services:
+
+  app:
+      image: php:8.2-fpm
+      container_name: php_app
+      volumes:
+      - ./aplicacao:/var/www/html
+      networks:
+      - python_network
+
 # banco de dados mySQL
   db:
       image: mysql:5.7.22 # imagem do docker hub escolhida
@@ -40,18 +49,21 @@ services:
 
 #serviços para usar o PHP
   nginx:
-    build: ./nginx/
+    image: nginx:latest
+    restart: always
     ports: 
-      - 8090:80
+      - "8090:80"
     volumes:
-      - ./aplicacao/:/var/www/html/
+      - ./aplicacao/:/var/www/
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+
 
   php:
       build: ./php/
-      expose: 
-          - 8000
+      ports: 
+          - "8000:8000"
       volumes:
-          - ./aplicacao/:/var/www/html/
+          - ./aplicacao/:/var/www/
 
 networks:
     python_network: # nome da rede
